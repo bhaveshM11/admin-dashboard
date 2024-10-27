@@ -1,9 +1,8 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import cx from "classnames";
-import { withRouter } from "react-router-dom";
 
-import ResizeDetector from "react-resize-detector";
+import {useResizeDetector}  from "react-resize-detector";
 
 import AppMain from "../../Layout/AppMain";
 
@@ -14,6 +13,7 @@ class Main extends React.Component {
       closedSmallerSidebar: false,
     };
   }
+  
 
   render() {
     let {
@@ -26,13 +26,11 @@ class Main extends React.Component {
       enableMobileMenu,
       enablePageTabsAlt,
     } = this.props;
-
+    const { width, ref } = useResizeDetector();
     return (
-      <ResizeDetector
-        handleWidth
-        render={({ width }) => (
           <Fragment>
             <div
+              ref={ref}
               className={cx(
                 "app-container app-theme-" + colorScheme,
                 { "fixed-header": enableFixedHeader },
@@ -48,8 +46,6 @@ class Main extends React.Component {
               <AppMain />
             </div>
           </Fragment>
-        )}
-      />
     );
   }
 }
@@ -64,4 +60,4 @@ const mapStateToProp = (state) => ({
   enablePageTabsAlt: state.ThemeOptions.enablePageTabsAlt,
 });
 
-export default withRouter(connect(mapStateToProp)(Main));
+export default connect(mapStateToProp)(Main);

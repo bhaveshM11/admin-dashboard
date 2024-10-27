@@ -3,7 +3,6 @@ import React, { Fragment } from "react";
 import PageTitle from "../../../Layout/AppMain/PageTitle";
 
 // Examples
-import SweetAlerts from "./Examples/SweetAlerts";
 import ToastifyAlerts from "./Examples/ToastifyAlerts";
 import BasicAlerts from "./Examples/BasicAlerts";
 
@@ -19,7 +18,7 @@ export default class NotificationsExamples extends React.Component {
             Sweet Alerts
           </div>
         </div>
-        <SweetAlerts />
+        {/* <SweetAlerts /> */}
         <div className="mbg-3 h-auto ps-0 pe-0 bg-transparent no-border card-header">
           <div className="card-header-title fsize-2 text-capitalize fw-normal">
             Toastify

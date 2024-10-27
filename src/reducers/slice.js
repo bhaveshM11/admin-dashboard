@@ -18,7 +18,6 @@ const itemsSlice = createSlice({
   },
   reducers: {
     increment: (state, action) => {
-    console.log('testing increment', state.counter);
     state.counter++;
     },
     decrement: (state, action) => {
@@ -35,7 +34,6 @@ const itemsSlice = createSlice({
         state.data = action.payload;
       })
       .addCase(fetchItems.rejected, (state, action) => {
-        console.log(action);
         state.status = "failed";
         state.error = action.error.message;
       });

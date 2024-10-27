@@ -4,14 +4,13 @@ import { createRoot } from 'react-dom/client';
 
 import * as serviceWorker from "./serviceWorker";
 
-import { HashRouter } from "react-router-dom";
+import {HashRouter } from "react-router-dom";
 import "./assets/base.scss";
 import Main from "./Pages/Main";
 import configureStore from "./config/configureStore";
-import {store} from "./config/store"
 import { Provider } from "react-redux";
 
-// const store = configureStore();
+const store = configureStore();
 const rootElement = document.getElementById("root");
 
 const renderApp = (Component) => (

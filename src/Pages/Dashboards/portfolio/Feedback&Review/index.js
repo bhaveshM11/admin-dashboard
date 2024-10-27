@@ -2,7 +2,10 @@ import React, { Fragment } from "react";
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import PageTitle from "../../../Layout/AppMain/PageTitle";
-export default class MyTrainings extends React.Component {
+import TableBordered from "../../../DemoPages/Tables/RegularTables/Examples/TableBordered";
+
+
+export default class TrainingRequests extends React.Component {
   render() {
     return (
       <Fragment>
@@ -10,11 +13,13 @@ export default class MyTrainings extends React.Component {
           <CSSTransition component="div" classNames="TabsAnimation" appear={true}
             timeout={1500} enter={false} exit={false}>
             <div>  
-              <PageTitle heading="MY TRAINING"
+              <PageTitle heading="Feedback and Review"
                 subheading="Wide icons selection including from flag icons to FontAwesome and other icons libraries."
                 icon="pe-7s-phone icon-gradient bg-night-fade"/>
-                
+                 <div>THIS IS THE REQUEST DATA TABLE</div>
+            <TableBordered />
             </div>
+           
           </CSSTransition>
         </TransitionGroup>
       </Fragment>

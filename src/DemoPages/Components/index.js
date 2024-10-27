@@ -1,91 +1,54 @@
 import React, { Fragment } from "react";
-import { Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 // COMPONENTS
 
 // Tabs
-
 import TabExample from "./Tabs/";
-
-// Accordeon
-
+// Accordion
 import AccordionExample from "./Accordion/";
-
 // Notifications
-
 import NotificationsExamples from "./Notifications/";
-
 // Block Loading
-
 import BlockLoadingExample from "./BlockLoading/";
-
 // Progress Bar
-
 import ProgressBarsExamples from "./ProgressBar/";
-
 // Tooltips & Popovers
-
 import TooltipsPopoversExample from "./TooltipsPopovers/";
-
 // Modals
-
 import ModalsExample from "./Modal/";
-
 // Ratings
-
 import RatingsExample from "./Ratings/";
-
 // Image Crop
-
 import ImageCropExample from "./ImageCropper/";
-
 // Carousel
-
 import CarouselExample from "./Carousel/";
-
 // Count Up
-
 import CountUpExample from "./CountUp/";
-
 // Sticky Elements
-
 import StickyElements from "./StickyElements/";
-
 // Scrollable Elements
-
 import ScrollableElements from "./ScrollableElements/";
-
 // Tree View
-
 import TreeView from "./TreeView/";
-
 // Guided Tours
-
 import GuidedToursExample from "./GuidedTours/";
-
 // Maps
-
 import MapsExample from "./Maps/";
-
 // Pagination
-
 import PaginationExamples from "./Pagination";
-
 // Calendar
-
 import CalendarExample from "./Calendar";
 
 // Layout
-
 import AppHeader from "../../Layout/AppHeader/";
 import AppSidebar from "../../Layout/AppSidebar/";
 import AppFooter from "../../Layout/AppFooter/";
 
 // Theme Options
-
 import ThemeOptions from "../../Layout/ThemeOptions/";
 
-const Components = ({ match }) => (
+const Components = () => (
   <Fragment>
     <ThemeOptions />
     <AppHeader />
@@ -93,79 +56,64 @@ const Components = ({ match }) => (
       <AppSidebar />
       <div className="app-main__outer">
         <div className="app-main__inner">
-          {/* Components */}
+          {/* Define Routes */}
+          <Routes>
+            {/* Components */}
 
-          {/* Tabs */}
+            {/* Tabs */}
+            <Route path="tabs" element={<TabExample />} />
 
-          <Route path={`${match.url}/tabs`} component={TabExample} />
+            {/* Accordion */}
+            <Route path="accordions" element={<AccordionExample />} />
 
-          {/* Accordion*/}
+            {/* Notifications */}
+            <Route path="notifications" element={<NotificationsExamples />} />
 
-          <Route path={`${match.url}/accordions`} component={AccordionExample}/>
+            {/* Block Loading */}
+            <Route path="loading-blocks" element={<BlockLoadingExample />} />
 
-          {/* Notifications */}
+            {/* Tooltips & Popovers */}
+            <Route path="tooltips-popovers" element={<TooltipsPopoversExample />} />
 
-          <Route path={`${match.url}/notifications`} component={NotificationsExamples}/>
+            {/* Progress Bar */}
+            <Route path="progress-bar" element={<ProgressBarsExamples />} />
 
-          {/* Block Loading */}
+            {/* Count Up */}
+            <Route path="count-up" element={<CountUpExample />} />
 
-          <Route path={`${match.url}/loading-blocks`} component={BlockLoadingExample}/>
+            {/* Sticky Elements */}
+            <Route path="sticky-elements" element={<StickyElements />} />
 
-          {/* Tooltips & Popovers */}
+            {/* Scrollable Elements */}
+            <Route path="scrollable-elements" element={<ScrollableElements />} />
 
-          <Route path={`${match.url}/tooltips-popovers`} component={TooltipsPopoversExample}/>
+            {/* Carousel */}
+            <Route path="carousel" element={<CarouselExample />} />
 
-          {/* Progress Bar */}
+            {/* Calendar */}
+            <Route path="calendar" element={<CalendarExample />} />
 
-          <Route path={`${match.url}/progress-bar`} component={ProgressBarsExamples}/>
+            {/* Modals */}
+            <Route path="modals" element={<ModalsExample />} />
 
-          {/* Count Up */}
+            {/* Maps */}
+            <Route path="maps" element={<MapsExample />} />
 
-          <Route path={`${match.url}/count-up`} component={CountUpExample} />
+            {/* Image Crop */}
+            <Route path="image-crop" element={<ImageCropExample />} />
 
-          {/* Sticky Elements */}
+            {/* Guided Tours */}
+            <Route path="guided-tours" element={<GuidedToursExample />} />
 
-          <Route path={`${match.url}/sticky-elements`} component={StickyElements}/>
+            {/* Pagination */}
+            <Route path="pagination" element={<PaginationExamples />} />
 
-          {/* Scrollable Elements */}
+            {/* Ratings */}
+            <Route path="ratings" element={<RatingsExample />} />
 
-          <Route path={`${match.url}/scrollable-elements`} component={ScrollableElements}/>
-
-          {/* Carousel */}
-
-          <Route path={`${match.url}/carousel`} component={CarouselExample} />
-
-          {/* Calendar */}
-
-          <Route path={`${match.url}/calendar`} component={CalendarExample} />
-
-          {/* Modals */}
-
-          <Route path={`${match.url}/modals`} component={ModalsExample} />
-
-          {/* Maps */}
-
-          <Route path={`${match.url}/maps`} component={MapsExample} />
-
-          {/* Image Crop */}
-
-          <Route path={`${match.url}/image-crop`} component={ImageCropExample}/>
-
-          {/* Guided Tours */}
-
-          <Route path={`${match.url}/guided-tours`} component={GuidedToursExample}/>
-
-          {/* Pagination */}
-
-          <Route path={`${match.url}/pagination`} component={PaginationExamples}/>
-
-          {/* Ratings */}
-
-          <Route path={`${match.url}/ratings`} component={RatingsExample} />
-
-          {/* Tree View */}
-
-          <Route path={`${match.url}/tree-view`} component={TreeView} />
+            {/* Tree View */}
+            <Route path="tree-view" element={<TreeView />} />
+          </Routes>
         </div>
         <AppFooter />
       </div>

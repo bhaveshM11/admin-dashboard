@@ -1,5 +1,6 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import cx from "classnames";
+import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
 
@@ -9,14 +10,35 @@ import HeaderLogo from "../AppLogo";
 
 import SearchBox from "./Components/SearchBox";
 import UserBox from "./Components/UserBox";
+// import { Link } from "react-scroll";
+import { useNavigate } from "react-router-dom";
+import { Button } from "reactstrap";
+import useAuth from "../../services/useAuth";
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import AuthService from "../../services/authService";
 
-class Header extends React.Component {
-  render() {
+const Header = (props) => {
+  
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { isLoggedIn, user } = useSelector((state) => state.authSlice);
+  const [userData,setUserData] = useState({});
     let {
       headerBackgroundColor,
       enableMobileMenuSmall,
       enableHeaderShadow,
-    } = this.props;
+    } = props;
+    useEffect( ()=>{
+      AuthService.checkLoggedIn(dispatch)
+      if(isLoggedIn){
+        const user = AuthService.getUsersData()
+        if(user){
+          setUserData((prev)=>({prev,...user}))
+        }
+      }
+    
+    },[isLoggedIn])
     return (
       <Fragment>
         <TransitionGroup>
@@ -30,11 +52,9 @@ class Header extends React.Component {
               <div className={cx("app-header__content", {
                   "header-mobile-open": enableMobileMenuSmall,
                 })}>
-                {/* <div className="app-header-left">
-                  <SearchBox />
-                </div> */}
                 <div className="app-header-right">
-                  <UserBox />
+                 {isLoggedIn == true ?  <UserBox userData={userData} /> : <Link to={"/user/login"}><Button>Log In</Button></Link>}
+                 
                 </div>
               </div>
             </div>
@@ -43,7 +63,6 @@ class Header extends React.Component {
       </Fragment>
     );
   }
-}
 
 const mapStateToProps = (state) => ({
   enableHeaderShadow: state.ThemeOptions.enableHeaderShadow,
